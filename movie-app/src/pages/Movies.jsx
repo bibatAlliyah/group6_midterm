@@ -1,12 +1,13 @@
 import { useSearchParams } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useSearchMoviesQuery } from "../services/omdbApi";
 import MovieCard from "../components/MovieCard";
-import { useEffect } from "react";
 
 export default function Movies() {
   const [params] = useSearchParams();
-  const search = params.get("q") || "";
+
+  //can't show all movies cuz the API only shows search-based results
+  const search = params.get("q") || "marvel";
 
   const [page, setPage] = useState(1);
 
@@ -14,14 +15,14 @@ export default function Movies() {
     setPage(1);
   }, [search]);
 
-  const shouldSkip = !search || search.trim() === "";
+  const { data, isLoading } = useSearchMoviesQuery({
+    search,
+    page,
+  });
 
-  const { data, isLoading } = useSearchMoviesQuery(
-    { search, page },
-    { skip: shouldSkip }
-  );
-
-  const movies = data?.Search || [];
+  const movies = (data?.Search || [])
+    .slice()
+    .sort((a, b) => a.Title.localeCompare(b.Title));
 
   return (
     <div>
@@ -29,14 +30,25 @@ export default function Movies() {
 
       {isLoading && <p>Loading...</p>}
 
+      {!isLoading && movies.length === 0 && (
+        <p>No movies found</p>
+      )}
+
       <div style={{ display: "flex", flexWrap: "wrap" }}>
         {movies.map((m) => (
           <MovieCard key={m.imdbID} movie={m} />
         ))}
       </div>
 
-      <button onClick={() => setPage((p) => p - 1)}>Prev</button>
-      <button onClick={() => setPage((p) => p + 1)}>Next</button>
+      <div>
+        <button onClick={() => setPage((p) => Math.max(p - 1, 1))}>
+          Prev
+        </button>
+
+        <button onClick={() => setPage((p) => p + 1)}>
+          Next
+        </button>
+      </div>
     </div>
   );
 }
