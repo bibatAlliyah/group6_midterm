@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
-const API_KEY = "ca8cd5e5";
+const API_KEY = import.meta.env.VITE_OMDB_API_KEY;
 
 export const omdbApi = createApi({
   reducerPath: "omdbApi",

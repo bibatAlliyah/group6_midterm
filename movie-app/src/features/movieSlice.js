@@ -10,10 +10,23 @@ const movieSlice = createSlice({
   initialState,
   reducers: {
     addBookmark: (state, action) => {
-      state.bookmarks.push(action.payload);
+      const exists = state.bookmarks.find(
+        (m) => m.imdbID === action.payload.imdbID
+      );
+
+      if (!exists) {
+        state.bookmarks.push(action.payload);
+      }
     },
+    
     addWatchLater: (state, action) => {
-      state.watchLater.push(action.payload);
+      const exists = state.watchLater.find(
+        (m) => m.imdbID === action.payload.imdbID
+      );
+
+      if (!exists) {
+        state.watchLater.push(action.payload);
+      }
     },
   },
 });

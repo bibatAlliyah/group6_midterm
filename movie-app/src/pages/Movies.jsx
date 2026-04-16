@@ -2,6 +2,7 @@ import { useSearchParams } from "react-router-dom";
 import { useState } from "react";
 import { useSearchMoviesQuery } from "../services/omdbApi";
 import MovieCard from "../components/MovieCard";
+import { useEffect } from "react";
 
 export default function Movies() {
   const [params] = useSearchParams();
@@ -9,9 +10,15 @@ export default function Movies() {
 
   const [page, setPage] = useState(1);
 
+  useEffect(() => {
+    setPage(1);
+  }, [search]);
+
+  const shouldSkip = !search || search.trim() === "";
+
   const { data, isLoading } = useSearchMoviesQuery(
     { search, page },
-    { skip: !search }
+    { skip: shouldSkip }
   );
 
   const movies = data?.Search || [];

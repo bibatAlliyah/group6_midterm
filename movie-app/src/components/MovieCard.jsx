@@ -8,7 +8,14 @@ export default function MovieCard({ movie }) {
   return (
     <div style={{ width: "150px" }}>
       <Link to={`/movie/${movie.imdbID}`}>
-        <img src={movie.Poster} width="100%" />
+        <img
+          src={
+            movie.Poster !== "N/A"
+              ? movie.Poster
+              : "https://via.placeholder.com/150"
+          }
+          width="100%"
+        />
       </Link>
 
       <p>{movie.Title}</p>
