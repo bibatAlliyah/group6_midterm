@@ -5,6 +5,15 @@ import SearchBar from "../components/SearchBar";
 export default function Home() {
   const [query, setQuery] = useState("");
   const navigate = useNavigate();
+  const handleSearch = () => {
+    if (!query.trim()) return;
+
+    const safeQuery = encodeURIComponent(
+      query.replace(/[^a-zA-Z0-9 ]/g, "")
+    );
+
+    navigate(`/movies?q=${safeQuery}`);
+  };
 
   return (
     <div>
@@ -13,10 +22,7 @@ export default function Home() {
       <SearchBar
         query={query}
         setQuery={setQuery}
-        onSearch={() => {
-          if (!query.trim()) return;
-          navigate(`/movies?q=${query}`);
-        }}
+        onSearch={handleSearch}
       />
     </div>
   );
