@@ -18,7 +18,13 @@ const movieSlice = createSlice({
         state.bookmarks.push(action.payload);
       }
     },
-    
+
+    removeBookmark: (state, action) => {
+      state.bookmarks = state.bookmarks.filter(
+        (m) => m.imdbID !== action.payload
+      );
+    },
+
     addWatchLater: (state, action) => {
       const exists = state.watchLater.find(
         (m) => m.imdbID === action.payload.imdbID
@@ -28,8 +34,20 @@ const movieSlice = createSlice({
         state.watchLater.push(action.payload);
       }
     },
+
+    removeWatchLater: (state, action) => {
+      state.watchLater = state.watchLater.filter(
+        (m) => m.imdbID !== action.payload
+      );
+    },
   },
 });
 
-export const { addBookmark, addWatchLater } = movieSlice.actions;
+export const {
+  addBookmark,
+  removeBookmark,
+  addWatchLater,
+  removeWatchLater,
+} = movieSlice.actions;
+
 export default movieSlice.reducer;

@@ -9,8 +9,14 @@ export const omdbApi = createApi({
   }),
   endpoints: (builder) => ({
     searchMovies: builder.query({
-      query: ({ search, page }) =>
-        `?apikey=${API_KEY}&s=${search}&page=${page}`,
+      query: ({ search, page, year, type }) => {
+        let url = `?apikey=${API_KEY}&s=${search}&page=${page}`;
+
+        if (year) url += `&y=${year}`;
+        if (type) url += `&type=${type}`;
+
+        return url;
+      },
     }),
 
     getMovieDetails: builder.query({
