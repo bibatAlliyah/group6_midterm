@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import SearchBar from "../components/SearchBar";
+import "./Home.css";
 
 export default function Home() {
   const [query, setQuery] = useState("");
@@ -16,14 +17,24 @@ export default function Home() {
   };
 
   return (
-    <div>
-      <h1>Welcome to MovieApp 🎬</h1>
+    <div className="home">
+      <div className="hero">
+        <img src="/logo.png" alt="logo" className="logo" />
+        <h1 className="app-title">MovieApp</h1>
+      </div>
 
       <SearchBar
         query={query}
         setQuery={setQuery}
         onSearch={handleSearch}
       />
+
+      <button
+        className="browse-btn"
+        onClick={() => navigate("/movies")}
+      >
+        Browse Movies ►
+      </button>
     </div>
   );
 }

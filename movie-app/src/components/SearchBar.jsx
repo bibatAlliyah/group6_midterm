@@ -1,13 +1,18 @@
+import "./SearchBar.css";
+
 export default function SearchBar({ query, setQuery, onSearch }) {
   return (
-    <div>
+    <div className="search-container">
       <input
+        className="search-input"
         value={query}
         onChange={(e) => setQuery(e.target.value)}
         placeholder="Search movies..."
       />
 
-      <button onClick={onSearch}>Search</button>
+      <button className="search-button" onClick={onSearch}>
+        Search
+      </button>
     </div>
   );
 }

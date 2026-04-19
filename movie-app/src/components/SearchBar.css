@@ -1,0 +1,33 @@
+.search-container {
+  display: flex;
+  width: 100%;
+  max-width: 600px;
+}
+
+.search-input {
+  flex: 1;
+  padding: 18px 20px;
+  font-size: 18px;
+
+  border-radius: 12px 0 0 12px;
+  border: none;
+  outline: none;
+}
+
+.search-button {
+  padding: 18px 25px;
+  font-size: 16px;
+
+  border: none;
+  cursor: pointer;
+
+  background: #ff1f1f;
+  color: white;
+
+  border-radius: 0 12px 12px 0;
+  transition: 0.2s;
+}
+
+.search-button:hover {
+  background: #e60000;
+}

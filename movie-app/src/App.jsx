@@ -7,18 +7,25 @@ import MovieDetails from "./pages/MovieDetails";
 import Bookmarks from "./pages/Bookmarks";
 import WatchLater from "./pages/WatchLater";
 
+import "./App.css";
+import "./index.css"
+
 export default function App() {
   return (
     <Router>
-      <Navbar />
+      <div className="app">
+        <Navbar />
 
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/movies" element={<Movies />} />
-        <Route path="/movie/:id" element={<MovieDetails />} />
-        <Route path="/bookmarks" element={<Bookmarks />} />
-        <Route path="/watch-later" element={<WatchLater />} />
-      </Routes>
+        <div className="content">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/movies" element={<Movies />} />
+            <Route path="/movie/:id" element={<MovieDetails />} />
+            <Route path="/bookmarks" element={<Bookmarks />} />
+            <Route path="/watch-later" element={<WatchLater />} />
+          </Routes>
+        </div>
+      </div>
     </Router>
   );
 }
