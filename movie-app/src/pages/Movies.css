@@ -1,0 +1,65 @@
+.movies-page {
+  padding: 80px 40px;
+  color: white;
+}
+
+/* TOP BAR LAYOUT */
+.movies-topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+/* CENTER SEARCH */
+.search-wrapper {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+/* FILTERS RIGHT */
+.filters-wrapper {
+  display: flex;
+  gap: 10px;
+}
+
+/* TITLE */
+.results-title {
+  margin: 20px 0;
+}
+
+/* MOVIE GRID (GLASS EFFECT) */
+.movies-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 10px;
+
+  padding: 20px;
+  border-radius: 16px;
+
+  /* background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px); */
+}
+
+/* PAGINATION */
+.pagination {
+  margin-top: 20px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.pagination button {
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+}
+
+.active-page {
+  background: red;
+  color: white;
+}

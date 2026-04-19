@@ -31,3 +31,23 @@
 .search-button:hover {
   background: #e60000;
 }
+
+/* 🔥 SMALL VERSION (Movies Page) */
+.small {
+  max-width: 700px;
+}
+
+.small .search-input {
+  padding: 15px 17px;
+  font-size: 19px;
+}
+
+.small .search-button {
+  padding: 10px 14px;
+  font-size: 14px;
+}
+
+/* 🔥 OPTIONAL BIG VERSION (Home Page) */
+.normal {
+  max-width: 600px;
+}

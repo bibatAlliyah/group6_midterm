@@ -1,12 +1,27 @@
+import SearchBar from "../components/SearchBar";
+import { useNavigate } from "react-router-dom";
 import { useSearchParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useSearchMoviesQuery } from "../services/omdbApi";
 import MovieCard from "../components/MovieCard";
+import "./Movies.css";
 
 export default function Movies() {
-  const [params] = useSearchParams();
+  const navigate = useNavigate();
 
-  const search = params.get("q") || "marvel";
+  const [query, setQuery] = useState("");
+  const [params] = useSearchParams();
+  const search = params.get("q") || "movies";
+  const handleSearch = () => {
+    if (!query.trim()) return;
+
+    const safeQuery = encodeURIComponent(
+      query.replace(/[^a-zA-Z0-9 ]/g, "")
+    );
+
+    navigate(`/movies?q=${safeQuery}`);
+  };
+  
 
   const [page, setPage] = useState(1);
 
@@ -45,85 +60,83 @@ export default function Movies() {
   const end = Math.min(start + 9, totalPages);
 
   return (
-    <div>
-      <h2>Results for: {search}</h2>
+    <div className="movies-page">
 
-      {/* FILTER BAR */}
-      <div style={{ marginBottom: "10px", display: "flex", gap: "10px", flexWrap: "wrap" }}>
+      {/* TOP BAR */}
+      <div className="movies-topbar">
 
-        {/* YEAR DROPDOWN */}
-        <select value={year} onChange={(e) => setYear(e.target.value)}>
-          <option value="">All Years</option>
-          {Array.from({ length: 30 }, (_, i) => {
-            const y = 2026 - i;
-            return (
-              <option key={y} value={y}>
-                {y}
-              </option>
-            );
-          })}
-        </select>
+        {/* SEARCH (CENTER) */}
+        <div className="search-wrapper">
+          <SearchBar
+            query={query}
+            setQuery={setQuery}
+            onSearch={handleSearch}
+            size="small"
+          />
+        </div>
 
-        {/* TYPE FILTER */}
-        <select value={type} onChange={(e) => setType(e.target.value)}>
-          <option value="">All Types</option>
-          <option value="movie">Movie</option>
-          <option value="series">Series</option>
-          <option value="episode">Episode</option>
-        </select>
+        {/* FILTERS (RIGHT) */}
+        <div className="filters-wrapper">
 
-        {/* SORT */}
-        <select value={sortOrder} onChange={(e) => setSortOrder(e.target.value)}>
-          <option value="asc">A–Z</option>
-          <option value="desc">Z–A</option>
-        </select>
+          <select value={year} onChange={(e) => setYear(e.target.value)}>
+            <option value="">All Years</option>
+            {Array.from({ length: 30 }, (_, i) => {
+              const y = 2026 - i;
+              return (
+                <option key={y} value={y}>
+                  {y}
+                </option>
+              );
+            })}
+          </select>
 
-        {/* CLEAR FILTERS */}
-        <button
-          onClick={() => {
-            setYear("");
-            setType("");
-            setSortOrder("asc");
-          }}
-        >
-          Clear Filters
-        </button>
+          <select value={type} onChange={(e) => setType(e.target.value)}>
+            <option value="">All Types</option>
+            <option value="movie">Movie</option>
+            <option value="series">Series</option>
+            <option value="episode">Episode</option>
+          </select>
+
+          <select value={sortOrder} onChange={(e) => setSortOrder(e.target.value)}>
+            <option value="asc">A–Z</option>
+            <option value="desc">Z–A</option>
+          </select>
+
+          <button
+            onClick={() => {
+              setYear("");
+              setType("");
+              setSortOrder("asc");
+            }}
+          >
+            Clear Filters
+          </button>
+
+        </div>
       </div>
+
+      {/* TITLE */}
+      <h2 className="results-title">Results for: {search}</h2>
 
       {/* STATES */}
       {isLoading && <p>Loading...</p>}
       {isError && <p>Something went wrong</p>}
 
-      {!isLoading && movies.length === 0 && (
-        <p>No movies found</p>
-      )}
+      {!isLoading && movies.length === 0 && <p>No movies found</p>}
 
-      {/* MOVIE LIST */}
-      <div style={{ display: "flex", flexWrap: "wrap" }}>
+      {/* MOVIE GRID */}
+      <div className="movies-grid">
         {movies.map((m) => (
           <MovieCard key={m.imdbID} movie={m} />
         ))}
       </div>
 
       {/* PAGINATION */}
-      <div
-        style={{
-          marginTop: "15px",
-          display: "flex",
-          alignItems: "center",
-          gap: "6px",
-          flexWrap: "wrap",
-        }}
-      >
-        {/* PREV */}
-        <button
-          onClick={() => setPage((p) => Math.max(p - 1, 1))}
-          disabled={page === 1}
-        >
+      <div className="pagination">
+        <button onClick={() => setPage((p) => Math.max(p - 1, 1))}>
           Prev
         </button>
 
-        {/* PAGE NUMBERS (10 AT A TIME) */}
         {Array.from({ length: end - start + 1 }, (_, i) => {
           const pageNum = start + i;
 
@@ -131,29 +144,22 @@ export default function Movies() {
             <button
               key={pageNum}
               onClick={() => setPage(pageNum)}
-              style={{
-                fontWeight: pageNum === page ? "bold" : "normal",
-                textDecoration: pageNum === page ? "underline" : "none",
-              }}
+              className={pageNum === page ? "active-page" : ""}
             >
               {pageNum}
             </button>
           );
         })}
 
-        {/* NEXT */}
-        <button
-          onClick={() => setPage((p) => Math.min(p + 1, totalPages))}
-          disabled={page === totalPages}
-        >
+        <button onClick={() => setPage((p) => Math.min(p + 1, totalPages))}>
           Next
         </button>
 
-        {/* PAGE INDICATOR */}
-        <span style={{ marginLeft: "10px", fontWeight: "bold" }}>
+        <span>
           Page {page} of {totalPages || 1}
         </span>
       </div>
+
     </div>
   );
 }

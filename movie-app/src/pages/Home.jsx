@@ -27,6 +27,7 @@ export default function Home() {
         query={query}
         setQuery={setQuery}
         onSearch={handleSearch}
+        size="normal"
       />
 
       <button

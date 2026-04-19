@@ -1,8 +1,13 @@
 import "./SearchBar.css";
 
-export default function SearchBar({ query, setQuery, onSearch }) {
+export default function SearchBar({
+  query,
+  setQuery,
+  onSearch,
+  size = "normal"
+}) {
   return (
-    <div className="search-container">
+    <div className={`search-container ${size}`}>
       <input
         className="search-input"
         value={query}
