@@ -12,16 +12,125 @@
 }
 
 /* CENTER SEARCH */
-.search-wrapper {
+.search-filter-group {
   flex: 1;
   display: flex;
   justify-content: center;
+  gap: 20px;
 }
 
-/* FILTERS RIGHT */
-.filters-wrapper {
+/* WRAPPER */
+.filterWrapper {
+  position: relative;
+}
+
+/* BUTTON */
+.filterButton {
+  padding: 15px 17px;
+  font-size: 19px;
+  border-radius: 10px;
+  border: none;
+
+  background: linear-gradient(135deg, #ff1f1f, #b30000);
+  color: white;
+  font-weight: 500;
+
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.filterButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 0, 0, 0.4);
+}
+
+/* DROPDOWN PANEL */
+.filterDropdown {
+  position: absolute;
+  top: 60px;
+  left: 0;
+
+  width: 240px;
+  padding: 18px;
+
+  border-radius: 14px;
+
+  background: rgba(20, 20, 20, 0.9);
+  backdrop-filter: blur(14px);
+
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+
   display: flex;
-  gap: 10px;
+  flex-direction: column;
+  gap: 12px;
+
+  animation: fadeIn 0.2s ease;
+  z-index: 100;
+}
+
+/* LABELS */
+.filterDropdown label {
+  font-size: 12px;
+  color: #aaa;
+  margin-bottom: 2px;
+}
+
+/* SELECT INPUTS */
+.filterDropdown select {
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: none;
+
+  background: white;
+  color: black;
+
+  outline: none;
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+.filterDropdown select:hover {
+  background: rgb(255, 216, 216);
+}
+
+/* GROUP SPACING */
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* CLEAR BUTTON */
+.clearBtn {
+  margin-top: 8px;
+  padding: 10px;
+
+  border-radius: 8px;
+  border: none;
+
+  background: rgba(255, 0, 0, 0.9);
+  color: white;
+
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.clearBtn:hover {
+  background: red;
+  box-shadow: 0 5px 15px rgba(255, 0, 0, 0.4);
+}
+
+/* ANIMATION */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* TITLE */
@@ -32,7 +141,7 @@
 /* MOVIE GRID (GLASS EFFECT) */
 .movies-grid {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   gap: 10px;
 
   padding: 20px;
@@ -53,10 +162,16 @@
 }
 
 .pagination button {
-  padding: 6px 10px;
+  padding: 8px 12px;
   border-radius: 6px;
   border: none;
   cursor: pointer;
+  transition: 0.3s;
+}
+
+.pagination button:hover {
+  background: red;
+  color: black;
 }
 
 .active-page {

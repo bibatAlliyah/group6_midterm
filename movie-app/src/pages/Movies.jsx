@@ -58,6 +58,80 @@ export default function Movies() {
   // pagination window (10 pages at a time)
   const start = Math.floor((page - 1) / 10) * 10 + 1;
   const end = Math.min(start + 9, totalPages);
+  const [showFilters, setShowFilters] = useState(false);
+
+  function Filter({
+    show,
+    toggle,
+    sortOrder,
+    setSortOrder,
+    year,
+    setYear,
+    type,
+    setType
+  }) {
+    return (
+      <div className="filterWrapper">
+
+        <button className="filterButton" onClick={toggle}>
+          🔽 Filter
+        </button>
+
+        {show && (
+          <div className="filterDropdown">
+
+            {/* YEAR */}
+            <div className="filter-group">
+              <label>Year:</label>
+              <select value={year} onChange={(e) => setYear(e.target.value)}>
+                <option value="">All</option>
+                {Array.from({ length: 10 }, (_, i) => {
+                  const y = 2026 - i;
+                  return <option key={y}>{y}</option>;
+                })}
+              </select>
+            </div>
+
+            {/* TYPE */}
+            <div className="filter-group">
+              <label>Type:</label>
+              <select value={type} onChange={(e) => setType(e.target.value)}>
+                <option value="">All</option>
+                <option value="movie">Movie</option>
+                <option value="series">Series</option>
+                <option value="episode">Episode</option>
+              </select>
+            </div>
+
+            {/* SORT */}
+            <div className="filter-group">
+              <label>Sort:</label>
+              <select
+                value={sortOrder}
+                onChange={(e) => setSortOrder(e.target.value)}
+              >
+                <option value="asc">A–Z</option>
+                <option value="desc">Z–A</option>
+              </select>
+            </div>
+
+            {/* CLEAR */}
+            <button
+              className="clearBtn"
+              onClick={() => {
+                setYear("");
+                setType("");
+                setSortOrder("asc");
+              }}
+            >
+              Clear Filters
+            </button>
+
+          </div>
+        )}
+      </div>
+    );
+  }
 
   return (
     <div className="movies-page">
@@ -66,52 +140,24 @@ export default function Movies() {
       <div className="movies-topbar">
 
         {/* SEARCH (CENTER) */}
-        <div className="search-wrapper">
+        <div className="search-filter-group">
           <SearchBar
             query={query}
             setQuery={setQuery}
             onSearch={handleSearch}
             size="small"
           />
-        </div>
 
-        {/* FILTERS (RIGHT) */}
-        <div className="filters-wrapper">
-
-          <select value={year} onChange={(e) => setYear(e.target.value)}>
-            <option value="">All Years</option>
-            {Array.from({ length: 30 }, (_, i) => {
-              const y = 2026 - i;
-              return (
-                <option key={y} value={y}>
-                  {y}
-                </option>
-              );
-            })}
-          </select>
-
-          <select value={type} onChange={(e) => setType(e.target.value)}>
-            <option value="">All Types</option>
-            <option value="movie">Movie</option>
-            <option value="series">Series</option>
-            <option value="episode">Episode</option>
-          </select>
-
-          <select value={sortOrder} onChange={(e) => setSortOrder(e.target.value)}>
-            <option value="asc">A–Z</option>
-            <option value="desc">Z–A</option>
-          </select>
-
-          <button
-            onClick={() => {
-              setYear("");
-              setType("");
-              setSortOrder("asc");
-            }}
-          >
-            Clear Filters
-          </button>
-
+           <Filter
+            show={showFilters}
+            toggle={() => setShowFilters(!showFilters)}
+            sortOrder={sortOrder}
+            setSortOrder={setSortOrder}
+            year={year}
+            setYear={setYear}
+            type={type}
+            setType={setType}
+          />
         </div>
       </div>
 
