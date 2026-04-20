@@ -1,10 +1,16 @@
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addBookmark, addWatchLater } from "../features/movieSlice";
+import noPoster from "../assets/no-poster.png";
 import "./MovieCard.css";
 
 export default function MovieCard({ movie }) {
   const dispatch = useDispatch();
+
+  const hasPoster =
+    movie.Poster &&
+    movie.Poster !== "N/A" &&
+    movie.Poster !== "undefined";
 
   return (
     <div className="movie-card">
@@ -14,12 +20,11 @@ export default function MovieCard({ movie }) {
 
         <Link to={`/movie/${movie.imdbID}`}>
           <img
-            src={
-              movie.Poster !== "N/A"
-                ? movie.Poster
-                : "https://via.placeholder.com/300x450"
-            }
+            src={hasPoster ? movie.Poster : noPoster}
             alt={movie.Title}
+            onError={(e) => {
+              e.target.src = noPoster;
+            }}
           />
         </Link>
 
@@ -33,6 +38,7 @@ export default function MovieCard({ movie }) {
             ⏰
           </button>
         </div>
+
       </div>
 
       {/* TITLE */}
