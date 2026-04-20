@@ -18,8 +18,8 @@
 }
 
 .logo {
-  width: 70px;
-  height: 70px;
+  width: 150px;
+  height: auto;
   object-fit: contain;
 }
 
@@ -55,4 +55,8 @@
   src: url("../fonts/Alienscows-Bold-Trial.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
+}
+
+h1{
+  font-size: 55px;
 }
