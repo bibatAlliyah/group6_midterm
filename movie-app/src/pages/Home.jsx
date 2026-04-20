@@ -20,7 +20,9 @@ export default function Home() {
     <div className="home">
       <div className="hero">
         <img src="/logo.png" alt="logo" className="logo" />
-        <h1 className="app-title">MovieApp</h1>
+        <h1 style={{ fontFamily: "AliensAndCows" }}>
+          Movie App~ 🎬
+        </h1>
       </div>
 
       <SearchBar
