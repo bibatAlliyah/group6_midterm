@@ -5,7 +5,7 @@
       "headers": [
         {
           "key": "Content-Security-Policy",
-          "value": "default-src 'self'; img-src 'self' https://*.m.media-amazon.com https://via.placeholder.com; connect-src 'self' https://www.omdbapi.com; style-src 'self' 'unsafe-inline'; script-src 'self';"
+          "value": "default-src 'self'; img-src 'self' https://*.media-amazon.com https://*.media-imdb.com https://*.ssl-images-amazon.com https://via.placeholder.com data:; connect-src 'self' https://www.omdbapi.com; style-src 'self' 'unsafe-inline'; script-src 'self';"
         },
         {
           "key": "X-Frame-Options",
