@@ -37,7 +37,8 @@ export default function MovieCard({ movie }) {
 
       {/* TITLE */}
       <div className="movie-title">
-        {movie.Title}
+        <p>{movie.Title}</p>
+        <p>{movie.Year}</p>
       </div>
 
     </div>

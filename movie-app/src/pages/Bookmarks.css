@@ -1,0 +1,94 @@
+/* PAGE */
+.bookmarks-page {
+  padding: 40px 20px;
+  color: white;
+}
+
+/* TITLE */
+.bookmarks-title {
+  text-align: left;
+  font-size: 32px;
+  margin-bottom: 30px;
+}
+
+/* EMPTY TEXT */
+.empty-text {
+  text-align: center;
+  color: #aaa;
+}
+
+/* GRID */
+.bookmarks-grid {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 20px;
+  justify-items: center;
+}
+
+/* CARD */
+.bookmark-card {
+  width: 180px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+
+  transition: 0.25s ease;
+}
+
+.bookmark-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 25px rgba(255, 0, 0, 0.3);
+}
+
+/* IMAGE */
+.bookmark-card img {
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+}
+
+/* INFO */
+.bookmark-info {
+  padding: 10px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: space-between;
+}
+
+/* TITLE */
+.bookmark-title {
+  font-size: 14px;
+  margin-bottom: 8px;
+  text-align: left;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* max 2 lines */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+
+  min-height: 35px;
+}
+
+/* REMOVE BUTTON */
+.remove-btn {
+  width: 100%;
+  padding: 6px;
+
+  border: none;
+  border-radius: 6px;
+
+  background: rgba(255, 0, 0, 0.8);
+  color: white;
+
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.remove-btn:hover {
+  background: red;
+}
