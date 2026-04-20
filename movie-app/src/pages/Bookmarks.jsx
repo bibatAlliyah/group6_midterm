@@ -2,6 +2,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { removeBookmark } from "../features/movieSlice";
 import "./Bookmarks.css";
+import placeholder from "../assets/placeholder.png";
 
 export default function Bookmarks() {
   const dispatch = useDispatch();
@@ -25,9 +26,13 @@ export default function Bookmarks() {
                 src={
                   movie.Poster !== "N/A"
                     ? movie.Poster
-                    : "https://via.placeholder.com/300x450"
+                    : placeholder
                 }
                 alt={movie.Title}
+                width="100%"
+                onError={(e) => {
+                  e.target.src = placeholder;
+                }}
               />
             </Link>
 

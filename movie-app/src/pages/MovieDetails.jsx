@@ -2,6 +2,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useGetMovieDetailsQuery } from "../services/omdbApi";
 import { useDispatch } from "react-redux";
 import { addBookmark, addWatchLater } from "../features/movieSlice";
+import placeholder from "../assets/placeholder.png";
 import "./MovieDetails.css";
 
 export default function MovieDetails() {
@@ -69,9 +70,13 @@ export default function MovieDetails() {
             src={
               data.Poster !== "N/A"
                 ? data.Poster
-                : "https://via.placeholder.com/300x450"
+                : placeholder
             }
             alt={data.Title}
+            width="100%"
+            onError={(e) => {
+              e.target.src = placeholder;
+            }}
           />
 
           {/* ACTION BUTTONS */}

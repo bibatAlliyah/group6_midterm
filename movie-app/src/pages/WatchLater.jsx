@@ -2,6 +2,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { removeWatchLater } from "../features/movieSlice";
 import "./WatchLater.css";
+import placeholder from "../assets/placeholder.png";
 
 export default function WatchLater() {
   const dispatch = useDispatch();
@@ -25,10 +26,14 @@ export default function WatchLater() {
                 src={
                   movie.Poster !== "N/A"
                     ? movie.Poster
-                    : "https://via.placeholder.com/300x450"
-                }
+                    : placeholder
+                  }
                 alt={movie.Title}
-              />
+                width="100%"
+                onError={(e) => {
+                  e.target.src = placeholder;
+                }}
+                />
             </Link>
 
             <div className="watchlater-info">
