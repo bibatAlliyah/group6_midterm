@@ -32,15 +32,23 @@ export default function MovieDetails() {
           className="back-btn"
           onClick={() => navigate(-1)}
         >
-          ⬅ Back
+          ◀ Back
         </button>
 
         {/* LEFT SIDE */}
         <div className="details-left">
 
-          <h1 className="movie-title">{data.Title}</h1>
+          <h1 className="details-title">{data.Title}</h1>
+
+          {/* RATINGS */}
+          <div className="ratings">
+            <p><strong>IMDB:</strong> {imdbRating?.Value || "N/A"}</p>
+            <p><strong>Rotten Tomatoes:</strong> {rtRating?.Value || "N/A"}</p>
+          </div>
 
           <p className="movie-plot">{data.Plot}</p>
+
+          <p><strong>Cast:</strong> {data.Actors}</p>
 
           {/* INFO GRID */}
           <div className="movie-info-grid">
@@ -50,14 +58,6 @@ export default function MovieDetails() {
             <p><strong>Language:</strong> {data.Language}</p>
             <p><strong>Country:</strong> {data.Country}</p>
             <p><strong>Director:</strong> {data.Director}</p>
-          </div>
-
-          <p><strong>Actors:</strong> {data.Actors}</p>
-
-          {/* RATINGS */}
-          <div className="ratings">
-            <p><strong>IMDB:</strong> {imdbRating?.Value || "N/A"}</p>
-            <p><strong>Rotten Tomatoes:</strong> {rtRating?.Value || "N/A"}</p>
           </div>
 
         </div>
