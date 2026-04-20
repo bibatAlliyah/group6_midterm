@@ -9,3 +9,15 @@
   padding: 80px 40px 40px;
 }
 
+/* RESPONSIVE UPDATES */
+@media (max-width: 768px) {
+  .content {
+    padding: 80px 20px 20px;
+  }
+}
+
+@media (max-width: 425px) {
+  .content {
+    padding: 70px 15px 15px;
+  }
+}

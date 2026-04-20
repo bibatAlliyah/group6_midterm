@@ -1,27 +1,21 @@
 .movie-card {
-  width: 90%;
+  width: 100%; /* Changed from 90% to fill grid cell better */
   overflow: hidden;
   display: flex;
   flex-direction: column;
   padding: 10px;
-  /* background: rgba(255, 255, 255, 0.06);
-  backdrop-filter: blur(10px); */
-
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-/* HOVER EFFECT */
 .movie-card:hover {
   transform: translateY(-8px);
   box-shadow: 0 10px 25px rgba(255, 0, 0, 0.25);
 }
 
-/* POSTER AREA */
 .poster-wrapper {
   position: relative;
 }
 
-/* IMAGE */
 .poster-wrapper img {
   width: 100%;
   aspect-ratio: 2 / 3;
@@ -29,12 +23,10 @@
   display: block;
 }
 
-/* TOP RIGHT BUTTONS */
 .card-actions {
   position: absolute;
   top: 8px;
   right: 8px;
-
   display: flex;
   gap: 6px;
 }
@@ -43,11 +35,9 @@
   background: rgba(0, 0, 0, 0.6);
   border: none;
   color: white;
-
   padding: 6px;
   border-radius: 6px;
   cursor: pointer;
-
   transition: 0.2s;
 }
 
@@ -55,10 +45,19 @@
   background: red;
 }
 
-/* TITLE */
 .movie-title {
   padding: 10px 0px;
   font-size: 14px;
   text-align: left;
   color: white;
+}
+
+/* RESPONSIVE UPDATES */
+@media (max-width: 425px) {
+  .movie-title {
+    font-size: 12px;
+  }
+  .movie-card:hover {
+    transform: translateY(-4px); /* Smaller hover on mobile */
+  }
 }

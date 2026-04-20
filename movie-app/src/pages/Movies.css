@@ -68,14 +68,12 @@
   z-index: 100;
 }
 
-/* LABELS */
 .filterDropdown label {
   font-size: 12px;
   color: #aaa;
   margin-bottom: 2px;
 }
 
-/* SELECT INPUTS */
 .filterDropdown select {
   padding: 8px 10px;
   border-radius: 8px;
@@ -94,14 +92,12 @@
   background: rgb(255, 216, 216);
 }
 
-/* GROUP SPACING */
 .filter-group {
   display: flex;
   flex-direction: column;
   gap: 4px;
 }
 
-/* CLEAR BUTTON */
 .clearBtn {
   margin-top: 8px;
   padding: 10px;
@@ -121,38 +117,23 @@
   box-shadow: 0 5px 15px rgba(255, 0, 0, 0.4);
 }
 
-/* ANIMATION */
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-5px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-/* TITLE */
 .results-title {
   margin: 20px 0;
 }
 
-/* MOVIE GRID (GLASS EFFECT) */
 .movies-grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 10px;
-
   padding: 20px;
   border-radius: 16px;
-
-  /* background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(12px); */
 }
 
-
-/* PAGINATION */
 .pagination {
   margin-top: 20px;
   display: flex;
@@ -170,12 +151,32 @@
   transition: 0.3s;
 }
 
-.pagination button:hover {
-  background: red;
-  color: black;
-}
-
 .active-page {
   background: red;
   color: white;
+}
+
+/* RESPONSIVE UPDATES */
+@media (max-width: 768px) {
+  .movies-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 425px) {
+  .movies-page {
+    padding: 70px 10px;
+  }
+  .movies-grid {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 10px 0;
+  }
+  .search-filter-group {
+    flex-direction: column;
+    align-items: center;
+  }
+  .filterDropdown {
+    left: 50%;
+    transform: translateX(-50%);
+  }
 }

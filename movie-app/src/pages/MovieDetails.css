@@ -8,43 +8,33 @@
 /* MAIN CONTAINER */
 .details-container {
   position: relative;
-
   display: flex;
   gap: 100px;
-
   max-width: 1300px;
   width: 100%;
-
   padding: 80px;
-
-  background: linear-gradient(
-    100deg,
-    rgba(131, 0, 0, 0.6),
-    rgba(0, 0, 0, 0)
-  );
-
+  background: linear-gradient(100deg, rgba(131, 0, 0, 0.6), rgba(0, 0, 0, 0));
   backdrop-filter: blur(12px);
 }
 
 /* BACK BUTTON */
 .back-btn {
-    position: absolute;
-    top: 35px;
-    left: 35px;
-    background: red;
-    padding: 10px;
-    border-radius: 100px;
-    border: none;
-    color: white;
-    cursor: pointer;
-    font-size: 15px;
-
-    
-    transition: 0.2s;
+  position: absolute;
+  top: 35px;
+  left: 35px;
+  background: red;
+  padding: 10px;
+  border-radius: 100px;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 15px;
+  transition: 0.2s;
+  z-index: 10;
 }
 
-.back-btn button:hover {
-    background: #ff1f1f;
+.back-btn:hover {
+  background: #ff1f1f;
 }
 
 /* LEFT SIDE */
@@ -54,24 +44,19 @@
   margin: 50px 100px 50px 0px;
 }
 
-.details-left p{
-    font-size: 18px;
-}
+.details-left p { font-size: 18px; }
 
-/* TITLE */
-.details-title .movie-title {
+.details-title {
   margin-bottom: 30px;
   font-size: 40px;
 }
 
-/* PLOT */
 .movie-plot {
   margin: 50px 0px;
   line-height: 1.5;
   color: #ddd;
 }
 
-/* INFO GRID */
 .movie-info-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -79,7 +64,6 @@
   margin-top: 15px;
 }
 
-/* RATINGS */
 .ratings {
   margin-top: 15px;
   display: flex;
@@ -94,7 +78,6 @@
   align-items: center;
 }
 
-/* POSTER */
 .details-right img {
   width: 100%;
   max-width: 600px;
@@ -102,10 +85,9 @@
   object-fit: cover;
 }
 
-/* BUTTONS BELOW POSTER */
 .details-actions {
   width: 100%;
-  gap:30px;
+  gap: 30px;
   display: flex;
   justify-content: space-between;
   margin-top: 10px;
@@ -121,10 +103,30 @@
   background: red;
   color: white;
   cursor: pointer;
-
   transition: 0.2s;
 }
 
-.details-actions button:hover {
-  background: #ff1f1f;
+/* RESPONSIVE UPDATES */
+@media (max-width: 768px) {
+  .details-container {
+    flex-direction: column-reverse;
+    padding: 60px 40px;
+    gap: 30px;
+  }
+  .details-left {
+    margin: 0;
+  }
+  .details-right img {
+    max-width: 350px;
+  }
+}
+
+@media (max-width: 425px) {
+  .details-container {
+    padding: 80px 20px 40px;
+  }
+  .details-title { font-size: 28px; }
+  .movie-info-grid { grid-template-columns: 1fr; }
+  .ratings { gap: 20px; flex-direction: column; }
+  .details-actions { flex-direction: column; gap: 10px; }
 }
