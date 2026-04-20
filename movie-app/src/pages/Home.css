@@ -48,3 +48,11 @@
   color: black;
   border: 2px solid white;
 }
+
+/* fonts */
+@font-face {
+  font-family: "AliensAndCows";
+  src: url("../fonts/Alienscows-Bold-Trial.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
