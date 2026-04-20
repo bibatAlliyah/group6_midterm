@@ -82,11 +82,18 @@ export default function MovieDetails() {
           {/* ACTION BUTTONS */}
           <div className="details-actions">
 
-            <button onClick={() => dispatch(addBookmark(data))}>
+            <button
+              onClick={() => {
+                dispatch(addBookmark(data));
+              }}
+            >
               ⭐ Bookmark
             </button>
 
-            <button onClick={() => dispatch(addWatchLater(data))}>
+            <button onClick={() => {
+              dispatch(addWatchLater(data))
+              }}
+            >
               ⏰ Watch Later
             </button>
 
