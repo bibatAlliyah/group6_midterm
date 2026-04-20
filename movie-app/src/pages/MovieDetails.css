@@ -1,0 +1,122 @@
+/* PAGE */
+.details-page {
+  padding: 60px 20px;
+  display: flex;
+  justify-content: center;
+}
+
+/* MAIN CONTAINER */
+.details-container {
+  position: relative;
+
+  display: flex;
+  gap: 100px;
+
+  max-width: 1500px;
+  width: 100%;
+
+  padding: 80px;
+
+  background: linear-gradient(
+    100deg,
+    rgba(0, 0, 0, 0.8),
+    rgba(131, 0, 0, 0.6),
+    rgba(0, 0, 0, 0)
+  );
+
+  backdrop-filter: blur(12px);
+}
+
+/* BACK BUTTON */
+.back-btn {
+    position: absolute;
+    top: 35px;
+    left: 35px;
+    background: red;
+    padding: 10px;
+    border-radius: 100px;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+/* LEFT SIDE */
+.details-left {
+  flex: 2;
+  color: white;
+  margin: 50px 100px 50px 0px;
+}
+
+.details-left p{
+    font-size: 20px;
+}
+
+/* TITLE */
+.movie-title {
+  margin-bottom: 30px;
+}
+
+/* PLOT */
+.movie-plot {
+  margin-bottom: 20px;
+  line-height: 1.5;
+  color: #ddd;
+}
+
+/* INFO GRID */
+.movie-info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px 20px;
+  margin-bottom: 15px;
+}
+
+/* RATINGS */
+.ratings {
+  margin-top: 10px;
+}
+
+/* RIGHT SIDE */
+.details-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* POSTER */
+.details-right img {
+  width: 100%;
+  max-width: 600px;
+  border: 2px solid red;
+  object-fit: cover;
+}
+
+/* BUTTONS BELOW POSTER */
+.details-actions {
+  width: 100%;
+  gap:30px;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.details-actions button {
+  flex: 1;
+  margin: 0 5px;
+  padding: 10px;
+  font-size: 15px;
+  border: none;
+  border-radius: 100px;
+
+  background: red;
+  color: white;
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+.details-actions button:hover {
+  background: #ff1f1f;
+}
