@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addBookmark, addWatchLater } from "../features/movieSlice";
 import "./MovieCard.css";
+import placeholder from "../assets/placeholder.png";
 
 export default function MovieCard({ movie }) {
   const dispatch = useDispatch();
@@ -17,9 +18,13 @@ export default function MovieCard({ movie }) {
             src={
               movie.Poster !== "N/A"
                 ? movie.Poster
-                : "https://via.placeholder.com/300x450"
+                : placeholder
             }
             alt={movie.Title}
+            width="100%"
+            onError={(e) => {
+              e.target.src = placeholder;
+            }}
           />
         </Link>
 
