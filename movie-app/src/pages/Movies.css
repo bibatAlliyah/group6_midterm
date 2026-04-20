@@ -130,7 +130,7 @@
 .movies-grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  gap: 10px;
+  gap: 40px;
   padding: 20px;
   border-radius: 16px;
 }
@@ -147,10 +147,12 @@
 .pagination button {
   padding: 8px 12px;
   border-radius: 6px;
+  opacity: 0.9;
   border: none;
   cursor: pointer;
   transition: 0.3s;
 }
+
 
 .active-page {
   background: red;
@@ -164,7 +166,7 @@
   }
 }
 
-@media (max-width: 425px) {
+@media (max-width: 480px) {
   .movies-page {
     padding: 70px 10px;
   }
@@ -175,6 +177,12 @@
   .search-filter-group {
     flex-direction: column;
     align-items: center;
+  }
+
+  .filterButton{
+    padding: 10px 12px;
+    font-size: 14px;
+    width: 100%;
   }
   .filterDropdown {
     left: 50%;

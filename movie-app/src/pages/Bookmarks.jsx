@@ -43,7 +43,7 @@ export default function Bookmarks() {
                 className="remove-btn"
                 onClick={() => dispatch(removeBookmark(movie.imdbID))}
               >
-                Remove
+                🗑️
               </button>
             </div>
 

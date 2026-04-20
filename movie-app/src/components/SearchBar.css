@@ -8,11 +8,10 @@
   flex: 1;
   padding: 18px 20px;
   font-size: 18px;
-    font-family: 'Cabin', sans-serif;
+  font-family: 'Cabin', sans-serif;
   border-radius: 12px 0 0 12px;
   border: none;
   outline: none;
-  min-width: 0; /* Important for flex items on mobile */
 }
 
 .search-button {
@@ -21,16 +20,17 @@
   font-family: 'Cabin', sans-serif;
   border: none;
   cursor: pointer;
+
   background: #ff1f1f;
   color: white;
+
   border-radius: 0 12px 12px 0;
   transition: 0.2s;
 }
 
-.small { max-width: 700px; }
-.small .search-input { padding: 15px 17px; font-size: 19px; }
-.small .search-button { padding: 10px 14px; font-size: 19px; }
-.normal { max-width: 600px; }
+.search-button:hover {
+  background: #e60000;
+}
 
 /* 🔥 SMALL VERSION (Movies Page) */
 .small {
@@ -49,7 +49,23 @@
     font-family: 'Cabin', sans-serif;
 }
 
-/* 🔥 OPTIONAL BIG VERSION (Home Page) */
 .normal {
   max-width: 600px;
+}
+
+/* RESPONSIVE */
+
+/* MOBILE */
+@media (max-width: 480px) {
+  .small .search-container {
+    flex-direction: column;
+    max-width: 100%;
+  }
+
+  .small  .search-input,
+  .small  .search-button {
+    padding: 10px 12px;
+    font-size: 14px;
+  }
+
 }
