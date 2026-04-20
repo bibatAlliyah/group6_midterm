@@ -94,7 +94,19 @@
 }
 
 /* RESPONSIVENESS */
+/* TABLET */
 @media (max-width: 768px) {
+  .bookmarks-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+  
+  .remove-btn{
+    margin-top: 10px;
+  }
+}
+/* MOBILE */
+@media (max-width: 480px) {
   .bookmarks-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 15px;
@@ -106,5 +118,9 @@
 
   .bookmarks-title {
     font-size: 26px;
+  }
+
+  .remove-btn{
+    margin-top: 10px;
   }
 }

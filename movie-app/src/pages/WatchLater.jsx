@@ -43,7 +43,7 @@ export default function WatchLater() {
                 className="remove-btn"
                 onClick={() => dispatch(removeWatchLater(movie.imdbID))}
               >
-                Remove
+                🗑️Remove
               </button>
             </div>
 

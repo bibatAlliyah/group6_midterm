@@ -32,7 +32,8 @@
   flex-direction: column;
   overflow: hidden;
   padding: 10px;
-  background: rgba(255, 255, 255, 0.05);
+  background: linear-gradient(135deg, rgb(55, 11, 11), rgb(0, 0, 0));
+  border-radius: 12px;
   backdrop-filter: blur(10px);
 
   transition: 0.25s ease;
@@ -88,4 +89,37 @@
 
 .remove-btn:hover {
   background: red;
+}
+
+/* RESPONSIVENESS */
+/* TABLET */
+@media (max-width: 768px) {
+  .watchlater-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+
+  .remove-btn{
+    margin-top: 10px;
+  }
+  
+}
+/* MOBILE */
+@media (max-width: 480px) {
+  .watchlater-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+
+  .watchlater-card {
+    width: 160px;
+  }
+
+  .watchlater-title {
+    font-size: 26px;
+  }
+
+  .remove-btn{
+    margin-top: 10px;
+  }
 }

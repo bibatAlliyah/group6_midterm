@@ -23,12 +23,13 @@
   top: 35px;
   left: 35px;
   background: red;
-  padding: 10px;
+  font-family: "Cabin";
+  padding: 12px;
   border-radius: 100px;
   border: none;
   color: white;
   cursor: pointer;
-  font-size: 15px;
+  font-size: 18px;
   transition: 0.2s;
   z-index: 10;
 }
@@ -98,6 +99,7 @@
   margin: 0 5px;
   padding: 10px;
   font-size: 14px;
+  font-family: "Cabin";
   border: none;
   border-radius: 12px;
   background: red;
@@ -107,7 +109,7 @@
 }
 
 /* RESPONSIVE UPDATES */
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
   .details-container {
     flex-direction: column-reverse;
     padding: 60px 40px;
@@ -129,4 +131,111 @@
   .movie-info-grid { grid-template-columns: 1fr; }
   .ratings { gap: 20px; flex-direction: column; }
   .details-actions { flex-direction: column; gap: 10px; }
+} */
+
+/* TABLET */
+@media (max-width: 768px) {
+  .details-page {
+    padding: 40px 15px;
+  }
+
+  .details-container {
+    flex-direction: column-reverse;
+    padding: 40px 25px;
+    gap: 40px;
+  }
+
+  .details-left {
+    margin: 0;
+    text-align: justify;
+  }
+
+  .details-title {
+    font-size: 32px;
+    text-align: center;
+  }
+
+  .movie-plot {
+    margin: 25px 0;
+  }
+
+  .movie-info-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .ratings {
+    justify-content: center;
+    gap: 40px;
+  }
+
+  .details-right img {
+    max-width: 320px;
+  }
+
+  .details-actions {
+    justify-content: center;
+    margin-top: 35px;
+    width: 80%;
+  }
+
+  .details-actions button {
+    font-size: 16px;
+  }
+}
+
+/* MOBILE */
+@media (max-width: 480px) {
+  .details-page {
+    padding: 30px 10px;
+  }
+
+  .details-container {
+    padding: 50px 15px 30px;
+    gap: 20px;
+    flex-direction: column-reverse;
+  }
+
+  .back-btn {
+    top: 15px;
+    left: 15px;
+    padding: 8px;
+    font-size: 13px;
+  }
+
+  .details-title {
+    font-size: 24px;
+  }
+
+  .details-left p {
+    font-size: 15px;
+  }
+
+  .movie-plot {
+    font-size: 14px;
+  }
+
+  .movie-info-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .ratings {
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .details-right img {
+    max-width: 250px;
+    margin-top: 10px;
+  }
+
+  .details-actions {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .details-actions button {
+    width: 100%;
+  }
 }

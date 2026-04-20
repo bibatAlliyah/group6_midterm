@@ -163,7 +163,31 @@
 @media (max-width: 768px) {
   .movies-grid {
     grid-template-columns: repeat(3, 1fr);
+    padding: 8px 0;
   }
+
+  .filterDropdown {
+    left: 50%;
+    transform: translateX(-50%); /* center it */
+    width: 260px;
+    max-width: 85vw;
+  }
+
+  .search-filter-group {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .filterButton{
+    padding: 10px 12px;
+    font-size: 18px;
+    width: 100%;
+  }
+  .filterDropdown {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
 }
 
 @media (max-width: 480px) {
